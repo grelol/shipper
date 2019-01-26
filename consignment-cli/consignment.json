@@ -1,7 +1,6 @@
 {
-    "id": "01",
     "description": "A test consignment",
-    "weight": 550,
+    "weight": 55000,
     "containers": [
         {"id": "01", "customer_id": "cust001", "user_id": "user001", "origin": "Sydney, Australia"},
         {"id": "02", "customer_id": "cust002", "user_id": "user001", "origin": "Melbourne, Australia"},

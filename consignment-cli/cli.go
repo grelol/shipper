@@ -12,7 +12,6 @@ import (
 )
 
 const (
-	address  = "localhost:50051"
 	filename = "consignment.json"
 )
 
