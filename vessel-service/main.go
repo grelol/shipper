@@ -9,14 +9,17 @@ import (
 	micro "github.com/micro/go-micro"
 )
 
+// Repository interface
 type Repository interface {
 	FindAvailable(*pb.Specification) (*pb.Vessel, error)
 }
 
+// VesselRepository is a mock datastore
 type VesselRepository struct {
 	vessels []*pb.Vessel
 }
 
+// FindAvailable returns vessels that are available and that meet the specification
 func (repo *VesselRepository) FindAvailable(spec *pb.Specification) (*pb.Vessel, error) {
 	for _, vessel := range repo.vessels {
 		if spec.Capacity <= vessel.Capacity && spec.MaxWeight <= vessel.MaxWeight {
@@ -40,9 +43,11 @@ func (s *service) FindAvailable(ctx context.Context, req *pb.Specification, res 
 }
 
 func main() {
+
 	vessels := []*pb.Vessel{
 		&pb.Vessel{Id: "vess001", Name: "Boaty McBoatface", MaxWeight: 200000, Capacity: 500},
 	}
+
 	repo := &VesselRepository{vessels}
 
 	srv := micro.NewService(
